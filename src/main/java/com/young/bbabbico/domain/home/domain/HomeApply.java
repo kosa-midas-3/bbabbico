@@ -32,9 +32,9 @@ public class HomeApply extends BaseTimeEntity {
     private User user;
 
     @Builder
-    public HomeApply(LocalDate localDate, HomeApplyStatus homeRequestStatus, User user) {
-        this.date = localDate;
-        this.homeRequestStatus = homeRequestStatus;
+    public HomeApply(User user) {
+        this.date = LocalDate.now().plusDays(1);
+        this.homeRequestStatus = HomeApplyStatus.HOME_APPLY;
         this.user = user;
     }
 }
