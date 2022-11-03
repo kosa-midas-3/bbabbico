@@ -58,6 +58,7 @@ public class LoginUserService {
 
         return DepartmentMemberResponse.builder()
                 .name(user.getName())
+                .nickname(user.getNickname())
                 .isGoneToWork(attendance != null)
                 .startTime(attendance != null ? attendance.getCreatedAt() : null)
                 .workingMode(attendance != null ? attendance.getWorkingMode() : null)
