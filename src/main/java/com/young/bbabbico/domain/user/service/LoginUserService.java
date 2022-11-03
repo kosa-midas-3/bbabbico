@@ -8,6 +8,8 @@ import com.young.bbabbico.domain.department.domain.Department;
 import com.young.bbabbico.domain.department.domain.repository.DepartmentRepository;
 import com.young.bbabbico.domain.department.presentation.dto.response.DepartmentMemberResponse;
 import com.young.bbabbico.domain.department.presentation.dto.response.DepartmentResponse;
+import com.young.bbabbico.domain.home.domain.HomeApply;
+import com.young.bbabbico.domain.home.facade.HomeApplyFacade;
 import com.young.bbabbico.domain.user.domain.User;
 import com.young.bbabbico.domain.user.facade.UserFacade;
 import com.young.bbabbico.domain.user.presentation.dto.response.UserResponse;
@@ -22,18 +24,21 @@ import java.util.stream.Collectors;
 public class LoginUserService {
 
     private final UserFacade userFacade;
+    private final HomeApplyFacade homeApplyFacade;
     private final AttendanceFacade attendanceFacade;
     private final CoreTimeFacade coreTimeFacade;
     private final DepartmentRepository departmentRepository;
 
     public UserResponse execute(String name) {
         User user = userFacade.getUserByName(name);
+        HomeApply homeApply = homeApplyFacade.getNullableHomeApplyByUser(user);
         Attendance attendance = attendanceFacade.getTodayNullableAttendanceByUser(user);
         CoreTime coreTime = coreTimeFacade.getTodayNullableCoreTimeByUser(user);
 
         return UserResponse.builder()
                 .name(user.getName())
                 .nickname(user.getNickname())
+                .homeApplyStatus(homeApply != null ? homeApply.getHomeApplyStatus() : null)
                 .coreStartTime(coreTime != null ? coreTime.getStartTime() : null)
                 .coreEndTime(coreTime != null ? coreTime.getEndTime() : null)
                 .isGoneToWork(attendance != null)

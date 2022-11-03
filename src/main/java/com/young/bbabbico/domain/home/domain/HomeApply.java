@@ -26,7 +26,7 @@ public class HomeApply extends BaseTimeEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(length = 20, nullable = false)
-    private HomeApplyStatus homeRequestStatus;
+    private HomeApplyStatus homeApplyStatus;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
@@ -34,11 +34,11 @@ public class HomeApply extends BaseTimeEntity {
     @Builder
     public HomeApply(User user) {
         this.date = LocalDate.now().plusDays(1);
-        this.homeRequestStatus = HomeApplyStatus.HOME_APPLY;
+        this.homeApplyStatus = HomeApplyStatus.HOME_APPLY;
         this.user = user;
     }
 
     public void respondHomeApply(HomeApplyStatus status) {
-        this.homeRequestStatus = status;
+        this.homeApplyStatus = status;
     }
 }

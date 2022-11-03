@@ -3,6 +3,7 @@ package com.young.bbabbico.domain.user.presentation.dto.response;
 import com.young.bbabbico.domain.attendance.domain.type.WorkingMode;
 import com.young.bbabbico.domain.attendance.domain.type.WorkingStatus;
 import com.young.bbabbico.domain.department.presentation.dto.response.DepartmentResponse;
+import com.young.bbabbico.domain.home.domain.type.HomeApplyStatus;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -15,6 +16,7 @@ public class UserResponse {
 
     private String name;
     private String nickname;
+    private HomeApplyStatus homeApplyStatus;
     private LocalTime coreStartTime;
     private LocalTime coreEndTime;
     private Boolean isGoneToWork;

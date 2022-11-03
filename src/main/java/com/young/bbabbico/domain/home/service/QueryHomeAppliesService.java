@@ -52,7 +52,7 @@ public class QueryHomeAppliesService {
                 .workingStatus(attendance != null ? attendance.getWorkingStatus() : null)
                 .department(user.getDepartment().getName())
                 .homeApplyId(homeApply != null ? homeApply.getId() : null)
-                .homeApplyStatus(homeApply != null ? homeApply.getHomeRequestStatus() : null)
+                .homeApplyStatus(homeApply != null ? homeApply.getHomeApplyStatus() : null)
                 .build();
     }
 }
