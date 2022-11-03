@@ -37,4 +37,8 @@ public class HomeApply extends BaseTimeEntity {
         this.homeRequestStatus = HomeApplyStatus.HOME_APPLY;
         this.user = user;
     }
+
+    public void respondHomeApply(HomeApplyStatus status) {
+        this.homeRequestStatus = status;
+    }
 }

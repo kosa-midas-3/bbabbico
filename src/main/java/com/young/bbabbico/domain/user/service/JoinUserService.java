@@ -1,7 +1,6 @@
 package com.young.bbabbico.domain.user.service;
 
 import com.young.bbabbico.domain.department.domain.Department;
-import com.young.bbabbico.domain.department.domain.repository.DepartmentRepository;
 import com.young.bbabbico.domain.department.facade.DepartmentFacade;
 import com.young.bbabbico.domain.user.domain.User;
 import com.young.bbabbico.domain.user.domain.repository.UserRepository;

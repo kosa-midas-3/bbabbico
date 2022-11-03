@@ -1,9 +1,12 @@
 package com.young.bbabbico.domain.home.presentation;
 
+import com.young.bbabbico.domain.home.presentation.dto.reqeust.RespondHomeApplyRequest;
 import com.young.bbabbico.domain.home.service.ApplyWorkingFromHomeService;
 import com.young.bbabbico.domain.home.service.RespondHomeApplyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/home")
@@ -19,7 +22,7 @@ public class HomeApplyController {
     }
 
     @DeleteMapping("/apply")
-    public void respondHomeApply(@RequestParam String name) {
-        respondHomeApplyService.execute(name);
+    public void respondHomeApply(@RequestParam String name, @RequestBody @Valid RespondHomeApplyRequest request) {
+        respondHomeApplyService.execute(name, request);
     }
 }
