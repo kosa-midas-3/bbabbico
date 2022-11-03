@@ -10,6 +10,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Entity
@@ -29,6 +31,11 @@ public class Attendance extends BaseTimeEntity {
     @Column(length = 20, nullable = false)
     private Status status;
 
+    @Column(nullable = false)
+    private LocalDate date;
+
+    private LocalDateTime workingTime;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
@@ -36,6 +43,7 @@ public class Attendance extends BaseTimeEntity {
     public Attendance(User user) {
         this.workingMode = WorkingMode.COMPANY;
         this.status = Status.GO;
+        this.date = LocalDate.now();
         this.user = user;
     }
 
@@ -45,5 +53,6 @@ public class Attendance extends BaseTimeEntity {
 
     public void leave() {
         this.status = Status.LEAVE;
+        this.workingTime = this.createdAt.minus(LocalDateTime.now());
     }
 }

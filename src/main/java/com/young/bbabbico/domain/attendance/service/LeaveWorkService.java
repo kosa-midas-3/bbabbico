@@ -9,15 +9,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-
 @Service
 @RequiredArgsConstructor
 public class LeaveWorkService {
 
-    private final AttendanceRepository attendanceRepository;
     private final AttendanceFacade attendanceFacade;
     private final UserFacade userFacade;
 

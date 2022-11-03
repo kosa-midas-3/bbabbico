@@ -19,8 +19,7 @@ public class AttendanceFacade {
 
     @Transactional(readOnly = true)
     public Attendance getTodayAttendanceByUser(User user) {
-        return attendanceRepository.findByUserAndCreatedAtGreaterThan(
-                user, LocalDateTime.of(LocalDate.now(), LocalTime.MIN))
+        return attendanceRepository.findByUserAndDate(user, LocalDate.now())
                 .orElseThrow(() -> new IllegalArgumentException("출근하지 않은 사용자입니다."));
     }
 }
