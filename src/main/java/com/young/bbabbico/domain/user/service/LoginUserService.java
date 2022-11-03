@@ -12,6 +12,7 @@ import com.young.bbabbico.domain.home.domain.HomeApply;
 import com.young.bbabbico.domain.home.domain.type.HomeApplyStatus;
 import com.young.bbabbico.domain.home.facade.HomeApplyFacade;
 import com.young.bbabbico.domain.user.domain.User;
+import com.young.bbabbico.domain.user.domain.type.Authority;
 import com.young.bbabbico.domain.user.facade.UserFacade;
 import com.young.bbabbico.domain.user.presentation.dto.response.UserResponse;
 import lombok.RequiredArgsConstructor;
@@ -59,7 +60,7 @@ public class LoginUserService {
     }
 
     private List<DepartmentMemberResponse> getDepartmentMembers(Department department) {
-        return departmentRepository.findDepartmentMembers(department)
+        return departmentRepository.findDepartmentMembers(department, Authority.ADMIN)
                 .stream()
                 .map(this::createDepartmentMemberResponse)
                 .collect(Collectors.toList());
