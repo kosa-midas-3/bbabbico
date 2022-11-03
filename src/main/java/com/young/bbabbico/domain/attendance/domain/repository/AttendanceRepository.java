@@ -13,4 +13,5 @@ public interface AttendanceRepository extends CrudRepository<Attendance, Long> {
     Optional<Attendance> findByUserAndDate(User user, LocalDate date);
     Attendance findAttendanceByUserAndDate(User user, LocalDate date);
     List<Attendance> findByUserAndDateGreaterThanEqualAndDateLessThanEqual(User user, LocalDate monthStart, LocalDate monthEnd);
+    void deleteAllByUser(User user);
 }

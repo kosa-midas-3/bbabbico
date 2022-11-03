@@ -8,4 +8,5 @@ import java.time.LocalDate;
 
 public interface HomeApplyRepository extends CrudRepository<HomeApply, Long> {
     HomeApply findByUserAndDate(User user, LocalDate date);
+    void deleteAllByUser(User user);
 }

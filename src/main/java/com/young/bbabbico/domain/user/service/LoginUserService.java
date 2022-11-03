@@ -19,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -48,20 +49,21 @@ public class LoginUserService {
                 .startTime(attendance != null ? attendance.getCreatedAt() : null)
                 .workingMode(attendance != null ? attendance.getWorkingMode() : null)
                 .workingStatus(attendance != null ? attendance.getWorkingStatus() : null)
-                .department(getDepartment(user.getDepartment()))
+                .department(getDepartment(user.getDepartment(), user))
                 .build();
     }
 
-    private DepartmentResponse getDepartment(Department department) {
+    private DepartmentResponse getDepartment(Department department, User user) {
         return DepartmentResponse.builder()
                 .department(department.getName())
-                .members(getDepartmentMembers(department))
+                .members(getDepartmentMembers(department, user))
                 .build();
     }
 
-    private List<DepartmentMemberResponse> getDepartmentMembers(Department department) {
+    private List<DepartmentMemberResponse> getDepartmentMembers(Department department, User user) {
         return departmentRepository.findDepartmentMembers(department, Authority.USER)
                 .stream()
+                .filter(u -> !u.getName().equals(user.getName()))
                 .map(this::createDepartmentMemberResponse)
                 .collect(Collectors.toList());
     }

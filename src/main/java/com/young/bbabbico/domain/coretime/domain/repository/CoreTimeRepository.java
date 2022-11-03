@@ -8,4 +8,5 @@ import java.time.LocalDate;
 
 public interface CoreTimeRepository extends CrudRepository<CoreTime, Long> {
     CoreTime findCoreTimeByUserAndDate(User user, LocalDate date);
+    void deleteAllByUser(User user);
 }

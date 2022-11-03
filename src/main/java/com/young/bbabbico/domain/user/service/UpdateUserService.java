@@ -23,6 +23,6 @@ public class UpdateUserService {
 
         User targetUser = userFacade.getUserByName(request.getTargetName());
         targetUser.updateUser(request.getName(), request.getNickname(),
-                departmentFacade.getDepartmentByName(request.getName()));
+                departmentFacade.getDepartmentByName(request.getDepartment()));
     }
 }
