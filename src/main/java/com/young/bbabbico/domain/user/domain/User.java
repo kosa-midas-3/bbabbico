@@ -1,5 +1,6 @@
 package com.young.bbabbico.domain.user.domain;
 
+import com.young.bbabbico.domain.department.domain.Department;
 import com.young.bbabbico.global.entity.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -24,11 +25,11 @@ public class User extends BaseTimeEntity {
     @Column(length = 20, nullable = false)
     private String nickname;
 
-    @Column(length = 20, nullable = false)
-    private String department;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Department department;
 
     @Builder
-    public User(String name, String nickname, String department) {
+    public User(String name, String nickname, Department department) {
         this.name = name;
         this.nickname = nickname;
         this.department = department;
