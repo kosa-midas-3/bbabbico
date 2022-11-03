@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 @Getter
 @Entity
@@ -34,7 +35,7 @@ public class Attendance extends BaseTimeEntity {
     @Column(nullable = false)
     private LocalDate date;
 
-    private LocalDateTime workingTime;
+    private Long workingTime;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
@@ -53,6 +54,6 @@ public class Attendance extends BaseTimeEntity {
 
     public void leave() {
         this.status = Status.LEAVE;
-        this.workingTime = this.createdAt.minus(LocalDateTime.now());
+        this.workingTime = ChronoUnit.HOURS.between(getCreatedAt(), LocalDateTime.now());
     }
 }
