@@ -60,7 +60,7 @@ public class LoginUserService {
     }
 
     private List<DepartmentMemberResponse> getDepartmentMembers(Department department) {
-        return departmentRepository.findDepartmentMembers(department, Authority.ADMIN)
+        return departmentRepository.findDepartmentMembers(department, Authority.USER)
                 .stream()
                 .map(this::createDepartmentMemberResponse)
                 .collect(Collectors.toList());
