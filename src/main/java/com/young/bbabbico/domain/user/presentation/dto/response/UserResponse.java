@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Getter
 @Builder
@@ -14,6 +15,8 @@ public class UserResponse {
 
     private String name;
     private String nickname;
+    private LocalTime coreStartTime;
+    private LocalTime coreEndTime;
     private Boolean isGoneToWork;
     private LocalDateTime startTime;
     private WorkingMode workingMode;
