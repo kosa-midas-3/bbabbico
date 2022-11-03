@@ -14,4 +14,6 @@ public interface DepartmentRepository extends CrudRepository<Department, Long> {
 
     @Query("SELECT m FROM User m WHERE m.department = :department")
     List<User> findDepartmentMembers(Department department);
+
+    List<Department> findAll();
 }
