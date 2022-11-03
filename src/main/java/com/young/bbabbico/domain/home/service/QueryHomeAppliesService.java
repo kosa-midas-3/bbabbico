@@ -3,11 +3,13 @@ package com.young.bbabbico.domain.home.service;
 import com.young.bbabbico.domain.attendance.domain.Attendance;
 import com.young.bbabbico.domain.attendance.facade.AttendanceFacade;
 import com.young.bbabbico.domain.home.domain.HomeApply;
+import com.young.bbabbico.domain.home.domain.type.HomeApplyStatus;
 import com.young.bbabbico.domain.home.facade.HomeApplyFacade;
 import com.young.bbabbico.domain.home.presentation.dto.response.HomeApplyListResponse;
 import com.young.bbabbico.domain.home.presentation.dto.response.HomeApplyResponse;
 import com.young.bbabbico.domain.user.domain.User;
 import com.young.bbabbico.domain.user.domain.repository.UserRepository;
+import com.young.bbabbico.domain.user.domain.type.Authority;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,7 +34,7 @@ public class QueryHomeAppliesService {
     }
 
     private Map<String, List<HomeApplyResponse>> getGroupByDepartment() {
-        return userRepository.findAllUser()
+        return userRepository.findUsersByAuthority(Authority.USER)
                 .stream()
                 .map(this::createHomeApplyResponse)
                 .collect(Collectors.groupingBy(HomeApplyResponse::getDepartment));
@@ -52,7 +54,7 @@ public class QueryHomeAppliesService {
                 .workingStatus(attendance != null ? attendance.getWorkingStatus() : null)
                 .department(user.getDepartment().getName())
                 .homeApplyId(homeApply != null ? homeApply.getId() : null)
-                .homeApplyStatus(homeApply != null ? homeApply.getHomeApplyStatus() : null)
+                .homeApplyStatus(homeApply != null ? homeApply.getHomeApplyStatus() : HomeApplyStatus.NOTHING)
                 .build();
     }
 }

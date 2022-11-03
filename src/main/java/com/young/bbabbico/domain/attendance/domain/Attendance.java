@@ -54,6 +54,6 @@ public class Attendance extends BaseTimeEntity {
 
     public void leave() {
         this.workingStatus = WorkingStatus.LEAVE;
-        this.workingTime = ChronoUnit.HOURS.between(getCreatedAt(), LocalDateTime.now());
+        this.workingTime = ChronoUnit.HOURS.between(getCreatedAt(), LocalDateTime.now()) - 8;
     }
 }

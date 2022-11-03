@@ -23,6 +23,6 @@ public class HomeApplyFacade {
 
     @Transactional(readOnly = true)
     public HomeApply getNullableHomeApplyByUser(User user) {
-        return homeApplyRepository.findByUserAndDate(user, LocalDate.now());
+        return homeApplyRepository.findByUserAndDate(user, LocalDate.now().plusDays(1));
     }
 }

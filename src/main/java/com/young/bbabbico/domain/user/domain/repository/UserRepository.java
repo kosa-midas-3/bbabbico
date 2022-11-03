@@ -1,6 +1,7 @@
 package com.young.bbabbico.domain.user.domain.repository;
 
 import com.young.bbabbico.domain.user.domain.User;
+import com.young.bbabbico.domain.user.domain.type.Authority;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -12,6 +13,6 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
     void deleteByName(String name);
 
-    @Query("SELECT u FROM User u JOIN FETCH u.department")
-    List<User> findAllUser();
+    @Query("SELECT u FROM User u JOIN FETCH u.department WHERE u.authority = :authority")
+    List<User> findUsersByAuthority(Authority authority);
 }
