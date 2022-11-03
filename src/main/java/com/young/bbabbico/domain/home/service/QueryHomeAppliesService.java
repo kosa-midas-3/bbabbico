@@ -1,6 +1,7 @@
 package com.young.bbabbico.domain.home.service;
 
 import com.young.bbabbico.domain.attendance.domain.Attendance;
+import com.young.bbabbico.domain.attendance.domain.type.WorkingStatus;
 import com.young.bbabbico.domain.attendance.facade.AttendanceFacade;
 import com.young.bbabbico.domain.home.domain.HomeApply;
 import com.young.bbabbico.domain.home.domain.type.HomeApplyStatus;
@@ -50,6 +51,7 @@ public class QueryHomeAppliesService {
                 .nickname(user.getNickname())
                 .isGoneToWork(attendance != null)
                 .startTime(attendance != null ? attendance.getCreatedAt() : null)
+                .endTime(attendance != null && attendance.getWorkingStatus() == WorkingStatus.LEAVE ? attendance.getUpdatedAt() : null)
                 .workingMode(attendance != null ? attendance.getWorkingMode() : null)
                 .workingStatus(attendance != null ? attendance.getWorkingStatus() : null)
                 .department(user.getDepartment().getName())

@@ -17,8 +17,9 @@ public class UserResponse {
     private String name;
     private String nickname;
     private HomeApplyStatus homeApplyStatus;
-    private LocalTime coreStartTime;
-    private LocalTime coreEndTime;
+    private String coreStartTime;
+    private String coreEndTime;
+    private String coreReason;
     private Boolean isGoneToWork;
     private LocalDateTime startTime;
     private WorkingMode workingMode;

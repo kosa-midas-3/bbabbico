@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 @Getter
 @Entity
@@ -24,11 +23,11 @@ public class CoreTime extends BaseTimeEntity {
     @Column(nullable = false)
     private LocalDate date;
 
-    @Column(nullable = false)
-    private LocalTime startTime;
+    @Column(length = 10, nullable = false)
+    private String startTime;
 
-    @Column(nullable = false)
-    private LocalTime endTime;
+    @Column(length = 10, nullable = false)
+    private String endTime;
 
     @Column(length = 100, nullable = false)
     private String reason;
@@ -37,7 +36,7 @@ public class CoreTime extends BaseTimeEntity {
     private User user;
 
     @Builder
-    public CoreTime(LocalTime startTime, LocalTime endTime, String reason, User user) {
+    public CoreTime(String startTime, String endTime, String reason, User user) {
         this.date = LocalDate.now().plusDays(1);
         this.startTime = startTime;
         this.endTime = endTime;

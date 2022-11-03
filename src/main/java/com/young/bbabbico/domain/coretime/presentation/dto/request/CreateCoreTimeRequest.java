@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.time.LocalTime;
 import java.util.List;
 
 @Getter
@@ -19,9 +18,8 @@ public class CreateCoreTimeRequest {
     private List<String> userList;
 
     @NotNull
-    private List<LocalTime> timeList;
+    private List<String> timeList;
 
     @NotBlank
-    @Max(100)
     private String reason;
 }

@@ -17,6 +17,7 @@ public class HomeApplyResponse {
     private String nickname;
     private Boolean isGoneToWork;
     private LocalDateTime startTime;
+    private LocalDateTime endTime;
     private WorkingMode workingMode;
     private WorkingStatus workingStatus;
     private String department;

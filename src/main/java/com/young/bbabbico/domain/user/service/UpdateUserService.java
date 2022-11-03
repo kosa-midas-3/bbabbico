@@ -21,7 +21,8 @@ public class UpdateUserService {
         User user = userFacade.getUserByName(name);
         userFacade.checkAuthority(user.getAuthority(), Authority.ADMIN);
 
-        user.updateUser(request.getName(), request.getNickname(),
+        User targetUser = userFacade.getUserByName(request.getTargetName());
+        targetUser.updateUser(request.getName(), request.getNickname(),
                 departmentFacade.getDepartmentByName(request.getName()));
     }
 }

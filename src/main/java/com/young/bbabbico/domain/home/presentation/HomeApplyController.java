@@ -29,7 +29,7 @@ public class HomeApplyController {
         applyWorkingFromHomeService.execute(name);
     }
 
-    @DeleteMapping("/apply")
+    @PutMapping("/apply")
     public void respondHomeApply(@RequestParam String name, @RequestBody @Valid RespondHomeApplyRequest request) {
         respondHomeApplyService.execute(name, request);
     }

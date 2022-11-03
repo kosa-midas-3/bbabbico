@@ -42,6 +42,7 @@ public class LoginUserService {
                 .homeApplyStatus(homeApply != null ? homeApply.getHomeApplyStatus() : HomeApplyStatus.NOTHING)
                 .coreStartTime(coreTime != null ? coreTime.getStartTime() : null)
                 .coreEndTime(coreTime != null ? coreTime.getEndTime() : null)
+                .coreReason(coreTime != null ? coreTime.getReason() : null)
                 .isGoneToWork(attendance != null)
                 .startTime(attendance != null ? attendance.getCreatedAt() : null)
                 .workingMode(attendance != null ? attendance.getWorkingMode() : null)

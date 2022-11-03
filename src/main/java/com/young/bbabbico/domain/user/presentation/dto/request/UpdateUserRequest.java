@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UpdateUserRequest {
 
+    private String targetName;
     private String name;
     private String nickname;
     private String department;
