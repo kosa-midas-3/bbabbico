@@ -22,6 +22,13 @@ public class AttendanceFacade {
     }
 
     @Transactional(readOnly = true)
+    public void checkTodayAttendanceByUser(User user) {
+        if (attendanceRepository.findByUserAndDate(user, LocalDate.now()).isPresent()) {
+            throw new IllegalArgumentException("이미 출근한 사용자입니다.");
+        }
+    }
+
+    @Transactional(readOnly = true)
     public Attendance getTodayNullableAttendanceByUser(User user) {
         return attendanceRepository.findAttendanceByUserAndDate(user, LocalDate.now());
     }
