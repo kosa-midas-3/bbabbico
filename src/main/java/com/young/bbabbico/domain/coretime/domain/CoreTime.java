@@ -30,14 +30,18 @@ public class CoreTime extends BaseTimeEntity {
     @Column(nullable = false)
     private LocalTime endTime;
 
+    @Column(length = 100, nullable = false)
+    private String reason;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
     @Builder
-    public CoreTime(LocalDate date, LocalTime startTime, LocalTime endTime, User user) {
-        this.date = date;
+    public CoreTime(LocalTime startTime, LocalTime endTime, String reason, User user) {
+        this.date = LocalDate.now().plusDays(1);
         this.startTime = startTime;
         this.endTime = endTime;
+        this.reason = reason;
         this.user = user;
     }
 }
