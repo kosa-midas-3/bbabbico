@@ -1,6 +1,6 @@
 package com.young.bbabbico.domain.attendance.domain;
 
-import com.young.bbabbico.domain.attendance.domain.type.Status;
+import com.young.bbabbico.domain.attendance.domain.type.WorkingStatus;
 import com.young.bbabbico.domain.attendance.domain.type.WorkingMode;
 import com.young.bbabbico.domain.user.domain.User;
 import com.young.bbabbico.global.entity.BaseTimeEntity;
@@ -30,7 +30,7 @@ public class Attendance extends BaseTimeEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(length = 20, nullable = false)
-    private Status status;
+    private WorkingStatus workingStatus;
 
     @Column(nullable = false)
     private LocalDate date;
@@ -43,7 +43,7 @@ public class Attendance extends BaseTimeEntity {
     @Builder
     public Attendance(User user) {
         this.workingMode = WorkingMode.COMPANY;
-        this.status = Status.GO;
+        this.workingStatus = WorkingStatus.GO;
         this.date = LocalDate.now();
         this.user = user;
     }
@@ -53,7 +53,7 @@ public class Attendance extends BaseTimeEntity {
     }
 
     public void leave() {
-        this.status = Status.LEAVE;
+        this.workingStatus = WorkingStatus.LEAVE;
         this.workingTime = ChronoUnit.HOURS.between(getCreatedAt(), LocalDateTime.now());
     }
 }
