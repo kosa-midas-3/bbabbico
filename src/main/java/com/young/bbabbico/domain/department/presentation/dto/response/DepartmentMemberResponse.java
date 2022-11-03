@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @Builder
 public class DepartmentMemberResponse {
     private String name;
+    private Boolean isGoneToWork;
     private LocalDateTime startTime;
     private WorkingMode workingMode;
     private WorkingStatus workingStatus;

@@ -14,6 +14,7 @@ public class UserResponse {
 
     private String name;
     private String nickname;
+    private Boolean isGoneToWork;
     private LocalDateTime startTime;
     private WorkingMode workingMode;
     private WorkingStatus workingStatus;

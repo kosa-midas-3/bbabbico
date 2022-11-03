@@ -8,8 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -21,5 +20,10 @@ public class AttendanceFacade {
     public Attendance getTodayAttendanceByUser(User user) {
         return attendanceRepository.findByUserAndDate(user, LocalDate.now())
                 .orElseThrow(() -> new IllegalArgumentException("출근하지 않은 사용자입니다."));
+    }
+
+    @Transactional(readOnly = true)
+    public Attendance getTodayNullableAttendanceByUser(User user) {
+        return attendanceRepository.findAttendanceByUserAndDate(user, LocalDate.now());
     }
 }
