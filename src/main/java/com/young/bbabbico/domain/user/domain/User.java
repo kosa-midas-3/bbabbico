@@ -40,4 +40,10 @@ public class User extends BaseTimeEntity {
         this.authority = authority;
         this.department = department;
     }
+
+    public void updateUser(String name, String nickname, Department department) {
+        this.name = name;
+        this.nickname = nickname;
+        this.department = department;
+    }
 }
